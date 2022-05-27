@@ -5,6 +5,7 @@ import com.contact.contact.entity.TransactionRequest;
 import com.contact.contact.entity.User;
 import com.contact.contact.repository.ContactRepository;
 import com.contact.contact.service.ContactService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -13,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contact")
-
 public class ContactController {
     @Autowired
     ContactService contactService;
@@ -34,6 +34,8 @@ public class ContactController {
     public List<Contact> getAllContact(){
         return contactService.getAllContact();
     }
+
+    @HystrixCommand(fallbackMethod = "callStudentServiceAndGetData_Fallback",commandKey="hello",groupKey="hello")
     @PostMapping("/contactsaveuser")
     public TransactionRequest insertContactUser(@RequestBody TransactionRequest request){
         Contact contact = request.getContact();
@@ -57,5 +59,8 @@ tr.setAddress(user.getAddress());
 tr.setId(user.getId());
 
 return  tr;
+}
+public String callStudentServiceAndGetData_Fallback() {
+    return "contact failed";
 }
 }
