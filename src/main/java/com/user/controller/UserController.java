@@ -18,7 +18,8 @@ public class UserController {
        return userService.insertUser(user);
     }
     @GetMapping("/getById/{id}")
-    public User getUser(@PathVariable("id") Integer id){
+    public User getUser(@PathVariable("id") Integer id) throws InterruptedException {
+        Thread.sleep(4000);
         return userService.getUser(id);
     }
     @GetMapping("/getAll")
