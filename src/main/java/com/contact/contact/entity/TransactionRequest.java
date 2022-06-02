@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TransactionRequest {
 
-    private Contact contact;
-    private int id;
-   // private String name;
+   private Contact contact;
+    private Integer id;
     private String phone;
     private String address;
+
+   // private User user;
 
 
 
