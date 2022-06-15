@@ -1,10 +1,10 @@
-package com.jdbc.com;
+package com.example.employee;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JdbctemplateApplicationTests {
+class EmployeeApplicationTests {
 
 	@Test
 	void contextLoads() {

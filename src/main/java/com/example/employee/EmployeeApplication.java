@@ -1,4 +1,4 @@
-package com.jdbc.com;
+package com.example.employee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,14 +10,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-public class JdbctemplateApplication {
+public class EmployeeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JdbctemplateApplication.class, args);
+		SpringApplication.run(EmployeeApplication.class, args);
 	}
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.jdbc.com")).build();
+				.apis(RequestHandlerSelectors.basePackage("com.example.employee")).build();
 	}
 }
